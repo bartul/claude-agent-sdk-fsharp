@@ -215,8 +215,7 @@ let buildArgs (options: Options) (isStreaming: bool) : string list =
     | Some sources ->
         let sourcesStr = sources |> List.map Json.Encode.settingSource |> String.concat ","
         args.AddRange(["--setting-sources"; sourcesStr])
-    | None ->
-        args.AddRange(["--setting-sources"; ""])
+    | None -> ()
 
     // Extra args
     for KeyValue(flag, value) in options.ExtraArgs do
